@@ -1,48 +1,49 @@
-# BlogForge
+# 🚀 BlogForge
 
-A blog platform I built to practice the MERN stack. Users can write posts,
-upload cover images, and use Gemini AI to generate content and tags.
+**Live Demo:** [https://blogforge.vercel.app](https://blogforge-pi.vercel.app)
 
-## What it does
+A modern, full-stack blogging platform built to demonstrate proficiency in the MERN stack, secure authentication, and third-party API integration. Users can publish rich-text articles, manage cover images via Cloudinary, and leverage Google's Gemini AI to automatically generate content and relevant tags.
 
-- Register/login with JWT auth
-- Write and publish blog posts with cover image upload (Cloudinary)
-- Generate post content and tags using the Gemini API
-- Like posts, leave comments, toggle dark mode
+## ✨ Features
 
-## Stack
+- **Secure Authentication:** User registration and login utilizing JWT (JSON Web Tokens) and bcrypt password hashing.
+- **AI Integration:** Seamless connection to the Google Gemini API (v2.5) for automated blog post generation and smart tagging.
+- **Media Management:** Direct image uploads and optimized delivery handled via Cloudinary.
+- **Interactive UI:** Full CRUD functionality for posts, a liking/commenting system, and a system-wide dark mode toggle.
+- **Responsive Design:** Fully responsive layout styled from scratch with Tailwind CSS.
 
-React + Vite, Node/Express, MongoDB, Tailwind CSS, Cloudinary, Gemini API
+## 🛠️ Tech Stack
 
-## Running it locally
+- **Frontend:** React, Vite, Tailwind CSS
+- **Backend:** Node.js, Express.js
+- **Database:** MongoDB Atlas (Mongoose ODM)
+- **External APIs:** Google Gemini AI, Cloudinary
 
-You'll need Node 18+, a MongoDB Atlas account, Cloudinary account, and a Gemini API key.
+## 🧠 Technical Challenges & Lessons Learned
+During the development and deployment of this platform, I navigated several real-world engineering challenges:
+- **API Deprecation & Upgrades:** Diagnosed `404 Not Found` errors in production by identifying a deprecated Gemini 1.5 model and refactoring the integration to support the current 2.5 API architecture.
+- **Security & Git Hygiene:** Implemented industry-standard security protocols by rotating compromised API keys, surgically removing sensitive `.env` files from Git caching, and rewriting repository history to maintain a secure public codebase.
+- **CORS & Multi-Environment Deployment:** Configured backend Cross-Origin Resource Sharing (CORS) to accept requests from local development environments while securely restricting production access to the live Vercel domain.
+
+## 💻 Running it Locally
+
+To run this project on your local machine, you will need Node.js 18+, a MongoDB Atlas account, a Cloudinary account, and a Google Gemini API key.
 
 ```bash
-# clone and install
-git clone https://github.com/yourusername/blogforge
+# Clone the repository
+git clone [https://github.com/kshitijsandelya/blogforge.git](https://github.com/kshitijsandelya/blogforge.git)
 cd blogforge
 
+# Setup the Backend
 cd server
 cp .env.example .env
-# fill in your keys in .env
+# Open .env and add your MongoDB, Cloudinary, and Gemini keys
 npm install
 npm run dev
 
-# open a second terminal
+# Setup the Frontend (in a new terminal)
 cd client
 cp .env.example .env
+# Open .env and add your local backend URL (http://localhost:5000/api)
 npm install
 npm run dev
-```
-
-App runs at http://localhost:5173
-
-## Env variables needed
-
-See `server/.env.example` and `client/.env.example` for what's required.
-Getting API keys:
-
-- MongoDB: https://cloud.mongodb.com (free M0 cluster)
-- Gemini: https://aistudio.google.com
-- Cloudinary: dashboard at https://cloudinary.com
